@@ -2,7 +2,7 @@ This notebook has solutions to different problems using python to improve my pro
 
 ## Table of Contents
 ### Difficulty: Easy
-1.  <a href="#Two Sum">Two Sum</a>
+<a href="#Two Sum">Two Sum</a>
 <li><a href="#Palindrome Number">Palindrome Number</a></li>
 <li><a href="#Roman to Integer">Roman to Integer</a></li>
 <li><a href="#Longest Common Prefix">Longest Common Prefix</a></li>
