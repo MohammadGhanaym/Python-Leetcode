@@ -1,8 +1,7 @@
-This notebook has solutions to different problems using python to improve my problem-solving skills.
-
 ## Table of Contents
 ### Difficulty: Easy
-<a href="#Two Sum">Two Sum</a>
+
+<li><a href="#Two Sum">Two Sum</a></li>
 <li><a href="#Palindrome Number">Palindrome Number</a></li>
 <li><a href="#Roman to Integer">Roman to Integer</a></li>
 <li><a href="#Longest Common Prefix">Longest Common Prefix</a></li>
@@ -34,8 +33,8 @@ This notebook has solutions to different problems using python to improve my pro
 <li><a href="#Linked_List_Cycle">Linked_List_Cycle</a></li>
 <li><a href="#Binary_Tree_Preorder_Traversal">Binary_Tree_Preorder_Traversal</a></li>
 <li><a href="#Binary_Tree_Postorder_Traversal">Binary_Tree_Postorder_Traversal</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Intersection_of_Two_Linked_Lists">Intersection_of_Two_Linked_Lists</a></li>
+<li><a href="#Excel_Sheet_Column_Title">Excel_Sheet_Column_Title</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -47,15 +46,61 @@ This notebook has solutions to different problems using python to improve my pro
 input().replace(' ', '_')
 ```
 
-     145. Binary Tree Postorder Traversal
+     168. Excel Sheet Column Title
     
 
 
 
 
-    '145._Binary_Tree_Postorder_Traversal'
+    '168._Excel_Sheet_Column_Title'
 
 
+
+
+```python
+# Provided ListNode class
+class ListNode:
+    def __init__(self, x):
+        self.val = x  # Value stored in the node
+        self.next = None  # Reference to the next node (initially None)
+
+# Function to build a singly linked list from a Python list
+def build_linked_list_from_list(input_list):
+    """
+    Build a singly linked list from a Python list.
+    Args:
+        input_list (list): The list of elements to convert into a linked list.
+    Returns:
+        ListNode: The head of the constructed linked list.
+    """
+    if not input_list:  # If the input list is empty, return None
+        return None
+
+    # Create the head of the linked list
+    head = ListNode(input_list[0])
+    current = head
+
+    # Iterate through the remaining elements in the list
+    for value in input_list[1:]:
+        current.next = ListNode(value)  # Create a new node and link it
+        current = current.next  # Move to the new node
+
+    return head  # Return the head of the linked list
+
+# Function to display the linked list
+def display_linked_list(head):
+    """
+    Display the linked list as a string.
+    Args:
+        head (ListNode): The head of the linked list.
+    """
+    elements = []
+    current = head
+    while current:
+        elements.append(str(current.val))  # Add each node's value to the list
+        current = current.next
+    print(" -> ".join(elements))  # Print the linked list as a string
+```
 
 
 ```python
@@ -726,6 +771,7 @@ def climbStairs(n):
 
 
 ```python
+def deleteDuplicates(self, head: ListNode) -> ListNode:
     """head: head of sorted linked list
     return linked list with no duplicates"""
     if head == None:
@@ -1432,17 +1478,79 @@ postorderTraversal(root)
 
 
 
+<a id='Intersection_of_Two_Linked_Lists'></a>
+### Intersection_of_Two_Linked_Lists
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def getIntersectionNode(headA: ListNode, headB: ListNode) -> ListNode:
+    lst = []
+    while headA:
+        lst.append(headA)
+        headA = headA.next
+   
+    while headB:
+        if headB in lst:
+            return headB
+        headB = headB.next
+    return None
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def getIntersectionNode(headA: ListNode, headB: ListNode) -> ListNode:
+    if headA is None or headB is None:
+        return None
+    pA, pB = headA, headB
+    while pA != pB:
+        pA = headB if pA is None else pA.next
+        pB = headA if pB is None else pB.next
+    return pB
 ```
+
+
+```python
+head1 = ListNode(1)
+head2 = ListNode(1)
+
+head2.next = head1
+
+intersect = getIntersectionNode(head1, head2)
+intersect
+```
+
+
+
+
+    <__main__.ListNode at 0x29e6d2811f0>
+
+
+
+<a id='Excel_Sheet_Column_Title'></a>
+### Excel_Sheet_Column_Title
+
+
+```python
+def convertToTitle(columnNumber) -> str:
+    excel_column = ""
+    while columnNumber > 0:
+        # 65 is ASCII number for 'A'
+        excel_column = chr(65 + ((columnNumber - 1) % 26)) + excel_column
+        columnNumber = (columnNumber - 1 ) // 26
+    return excel_column
+```
+
+
+```python
+convertToTitle(53)
+```
+
+
+
+
+    'BA'
+
+
 
 
 ```python
