@@ -35,6 +35,21 @@
 <li><a href="#Binary_Tree_Postorder_Traversal">Binary_Tree_Postorder_Traversal</a></li>
 <li><a href="#Intersection_of_Two_Linked_Lists">Intersection_of_Two_Linked_Lists</a></li>
 <li><a href="#Excel_Sheet_Column_Title">Excel_Sheet_Column_Title</a></li>
+<li><a href="#Majority_Element">Majority_Element</a></li>
+<li><a href="#Excel_Sheet_Column_Number">Excel_Sheet_Column_Number</a></li>
+<li><a href="#Combine_Two_Tables">Combine_Two_Tables</a></li>
+<li><a href="#Employees_Earning_More_Than_Their_Managers">Employees_Earning_More_Than_Their_Managers</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -46,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     168. Excel Sheet Column Title
+     181. Employees Earning More Than Their Managers
     
 
 
 
 
-    '168._Excel_Sheet_Column_Title'
+    '181._Employees_Earning_More_Than_Their_Managers'
 
 
 
@@ -1542,39 +1557,244 @@ def convertToTitle(columnNumber) -> str:
 
 
 ```python
-convertToTitle(53)
+convertToTitle(1000)
 ```
 
 
 
 
-    'BA'
+    'ALL'
 
 
+
+<a id='Majority_Element'></a>
+### Majority_Element
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def majorityElement(nums: list[int]) -> int:
+    num_vote = 0
+    candidate = 0
+    for num in nums:
+        if num_vote == 0:
+            candidate = num
+            
+        if candidate == num:
+            num_vote += 1
+        else:
+            num_vote -= 1
+            
+    return candidate
+```
+
+<a id='Excel_Sheet_Column_Number'></a>
+### Excel_Sheet_Column_Number
+
+
+```python
+def titleToNumber(columnTitle: str) -> int:
+    columnNum = 0
+    for c in columnTitle:
+        cNum = (ord(c) - 65) + 1
+        columnNum = (columnNum * 26) + cNum
+    
+    return columnNum
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+titleToNumber('ZY')
+```
+
+
+
+
+    701
+
+
+
+<a id='Combine_Two_Tables'></a>
+### Combine_Two_Tables
+
+
+```python
+import pandas as pd
+
+# Person Table
+data_person = {
+    'personId': [1, 2],
+    'lastName': ['Wang', 'Alice'],
+    'firstName': ['Allen', 'Bob']
+}
+person_df = pd.DataFrame(data_person)
+
+# Address Table
+data_address = {
+    'addressId': [1, 2],
+    'personId': [2, 3],
+    'city': ['New York City', 'Leetcode'],
+    'state': ['New York', 'California']
+}
+address_df = pd.DataFrame(data_address)
+
+# Display the DataFrames
+print("Person Table:")
+print(person_df)
+
+print("\nAddress Table:")
+print(address_df)
+```
+
+    Person Table:
+       personId lastName firstName
+    0         1     Wang     Allen
+    1         2    Alice       Bob
+    
+    Address Table:
+       addressId  personId           city       state
+    0          1         2  New York City    New York
+    1          2         3       Leetcode  California
+    
+
+
+```python
+def combine_two_tables(person: pd.DataFrame, address: pd.DataFrame) -> pd.DataFrame:
+    df = person.merge(right=address, on='personId', how='left')
+    df.drop(['personId', 'addressId'], axis=1, inplace=True)
+    return df
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+combine_two_tables(person=person_df, address=address_df)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lastName</th>
+      <th>firstName</th>
+      <th>city</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Wang</td>
+      <td>Allen</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alice</td>
+      <td>Bob</td>
+      <td>New York City</td>
+      <td>New York</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<a id='Employees_Earning_More_Than_Their_Managers'></a>
+### Employees_Earning_More_Than_Their_Managers
+
+
+```python
+import pandas as pd
+import numpy as np  # For handling null values
+
+# Employee Table
+data_employee = {
+    'id': [1, 2, 3, 4],
+    'name': ['Joe', 'Henry', 'Sam', 'Max'],
+    'salary': [70000, 80000, 60000, 90000],
+    'managerId': [3, 4, np.nan, np.nan]  # Use np.nan for null values
+}
+employee_df = pd.DataFrame(data_employee)
+
+# Display the DataFrame
+print("Employee Table:")
+print(employee_df)
+```
+
+    Employee Table:
+       id   name  salary  managerId
+    0   1    Joe   70000        3.0
+    1   2  Henry   80000        4.0
+    2   3    Sam   60000        NaN
+    3   4    Max   90000        NaN
+    
+
+
+```python
+def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
+    df = employee.merge(right=employee, left_on='id', right_on='managerId', how='inner')
+    earn_more = df[df['salary_y'] > df['salary_x']][['name_y']]
+    earn_more.rename(columns={'name_y': 'Employee'}, inplace=True)
+    return earn_more
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+find_employees(employee_df)
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Employee</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Joe</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
