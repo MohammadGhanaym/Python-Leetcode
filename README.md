@@ -39,8 +39,8 @@
 <li><a href="#Excel_Sheet_Column_Number">Excel_Sheet_Column_Number</a></li>
 <li><a href="#Combine_Two_Tables">Combine_Two_Tables</a></li>
 <li><a href="#Employees_Earning_More_Than_Their_Managers">Employees_Earning_More_Than_Their_Managers</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Duplicate_Emails">Duplicate_Emails</a></li>
+<li><a href="#Customers_Who_Never_Order">Customers_Who_Never_Order</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     181. Employees Earning More Than Their Managers
+     Customers Who Never Order
     
 
 
 
 
-    '181._Employees_Earning_More_Than_Their_Managers'
+    'Customers_Who_Never_Order'
 
 
 
@@ -954,8 +954,6 @@ isSameTree(n1, n2)
 <a id='Symmetric_Tree'></a>
 ### Symmetric Tree
 
-![image.png](5cc6baab-bde3-4e2c-acf8-7efe04c16b54.png)
-
 
 ```python
 class TreeNode:
@@ -1079,8 +1077,6 @@ def isBalanced(root) -> bool:
            isBalanced(root.right)
 ```
 
-![image.png](3b507bbd-2c82-4433-867f-fe4de79f2e42.png)
-
 
 ```python
 root = TreeNode(val=3, left=TreeNode(val=9), right=TreeNode(val=20, left=TreeNode(val=15), right=TreeNode(val=7)))
@@ -1093,8 +1089,6 @@ isBalanced(root)
     True
 
 
-
-![image.png](71595dd3-404c-48ee-8cc0-be311bd3d68d.png)
 
 
 ```python
@@ -1796,17 +1790,224 @@ find_employees(employee_df)
 
 
 
+<a id='Duplicate_Emails'></a>
+### Duplicate_Emails
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+import pandas as pd
+
+# Create the DataFrame
+data = {
+    'id': [1, 2, 3],
+    'email': ['a@b.com', 'a@b.com', 'a@b.com']
+}
+
+df = pd.DataFrame(data)
+print(df)
+```
+
+       id    email
+    0   1  a@b.com
+    1   2  a@b.com
+    2   3  a@b.com
+    
+
+
+```python
+df.duplicated(subset='email', keep=False)
+```
+
+
+
+
+    0    True
+    1    True
+    2    True
+    dtype: bool
+
+
+
+
+```python
+def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
+    return person[person.duplicated(subset='email')][['email']].drop_duplicates()
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+duplicate_emails(df)
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>a@b.com</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<a id='Customers_Who_Never_Order'></a>
+### Customers_Who_Never_Order
+
+
+```python
+import pandas as pd
+
+# Customers table
+customers_data = {
+    'id': [1, 2, 3, 4],
+    'name': ['Joe', 'Henry', 'Sam', 'Max']
+}
+customers_df = pd.DataFrame(customers_data)
+
+# Orders table
+orders_data = {
+    'id': [1, 2],
+    'customerId': [3, 1]
+}
+orders_df = pd.DataFrame(orders_data)
+
+print("Customers Table:")
+print(customers_df)
+print("\nOrders Table:")
+print(orders_df)
+```
+
+    Customers Table:
+       id   name
+    0   1    Joe
+    1   2  Henry
+    2   3    Sam
+    3   4    Max
+    
+    Orders Table:
+       id  customerId
+    0   1           3
+    1   2           1
+    
+
+
+```python
+customers_df.merge(right=orders_df, left_on='id', right_on='customerId', how='outer', indicator=True).query("_merge == 'left_only'")[['name']]
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Henry</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Max</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    df = customers.merge(right=orders, left_on='id', right_on='customerId', how='outer', indicator=True)
+    return df.query("_merge == 'left_only'")[['name']].rename(columns={'name':'customers'})
+```
+
+
+```python
+find_customers(customers_df, orders_df)
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>customers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Henry</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Max</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 
 ```python
