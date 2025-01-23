@@ -41,7 +41,7 @@
 <li><a href="#Employees_Earning_More_Than_Their_Managers">Employees_Earning_More_Than_Their_Managers</a></li>
 <li><a href="#Duplicate_Emails">Duplicate_Emails</a></li>
 <li><a href="#Customers_Who_Never_Order">Customers_Who_Never_Order</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Reverse_Bits">Reverse_Bits</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     Customers Who Never Order
+     190. Reverse Bits
     
 
 
 
 
-    'Customers_Who_Never_Order'
+    '190._Reverse_Bits'
 
 
 
@@ -2009,11 +2009,51 @@ find_customers(customers_df, orders_df)
 
 
 
+<a id='Reverse_Bits'></a>
+### Reverse_Bits
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def reverseBits(n: int) -> int:
+    bin_ = format(n, 'b')
+    bin_ = '0' * (32 - len(bin_)) + bin_
+    return int(bin_[::-1], base=2)
 ```
+
+
+```python
+reverseBits(43261596)
+```
+
+
+
+
+    964176192
+
+
+
+
+```python
+def reverseBits(n: int) -> int:
+    res = 0
+    for _ in range(32):
+        bit = (n & 1)
+        res = (res << 1) | bit
+        n = n >> 1
+    return res
+```
+
+
+```python
+reverseBits(43261596)
+```
+
+
+
+
+    964176192
+
+
 
 
 ```python
