@@ -42,7 +42,7 @@
 <li><a href="#Duplicate_Emails">Duplicate_Emails</a></li>
 <li><a href="#Customers_Who_Never_Order">Customers_Who_Never_Order</a></li>
 <li><a href="#Reverse_Bits">Reverse_Bits</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Number_of_1_Bits">Number_of_1_Bits</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     190. Reverse Bits
+     191. Number of 1 Bits
     
 
 
 
 
-    '190._Reverse_Bits'
+    '191._Number_of_1_Bits'
 
 
 
@@ -2055,11 +2055,48 @@ reverseBits(43261596)
 
 
 
+<a id='Number_of_1_Bits'></a>
+### Number_of_1_Bits
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def hammingWeight(n: int) -> int:
+    return format(n, 'b').count('1')
 ```
+
+
+```python
+hammingWeight(11)
+```
+
+
+
+
+    3
+
+
+
+
+```python
+def hammingWeight(n: int) -> int:
+    count = 0
+    while n > 0:
+        count += (n & 1)
+        n = n >> 1
+    return count
+```
+
+
+```python
+hammingWeight(2147483645)
+```
+
+
+
+
+    30
+
+
 
 
 ```python
