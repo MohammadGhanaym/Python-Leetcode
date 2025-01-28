@@ -43,7 +43,7 @@
 <li><a href="#Customers_Who_Never_Order">Customers_Who_Never_Order</a></li>
 <li><a href="#Reverse_Bits">Reverse_Bits</a></li>
 <li><a href="#Number_of_1_Bits">Number_of_1_Bits</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Missing_Number">Missing_Number</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     191. Number of 1 Bits
+     268. Missing Number
     
 
 
 
 
-    '191._Number_of_1_Bits'
+    '268._Missing_Number'
 
 
 
@@ -2098,11 +2098,60 @@ hammingWeight(2147483645)
 
 
 
+<a id='Missing_Number'></a>
+### Missing_Number
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def missingNumber(nums: list[int]) -> int:
+    return (set(range(len(nums) + 1)) - set(nums)).pop()
 ```
+
+
+```python
+missingNumber([9,6,4,2,3,5,7,0,1])
+```
+
+
+
+
+    8
+
+
+
+
+```python
+def missingNumber(nums: list[int]) -> int:
+    # No need to sort if input is guaranteed to be numbers 0 to n with one missing
+    nums.sort()
+    start, end = 0, len(nums) - 1
+
+    while start <= end:
+        mid = (start + end) // 2
+        # Check if nums[mid] matches its index
+        if nums[mid] == mid:
+            # Missing number is in the right half
+            start = mid + 1
+        else:
+            # Missing number is in the left half
+            end = mid - 1
+
+    # The missing number is the point where the index starts to deviate
+    return start
+
+```
+
+
+```python
+missingNumber([9,6,4,2,3,5,7,0,1])
+```
+
+
+
+
+    8
+
+
 
 
 ```python
