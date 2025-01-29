@@ -44,7 +44,7 @@
 <li><a href="#Reverse_Bits">Reverse_Bits</a></li>
 <li><a href="#Number_of_1_Bits">Number_of_1_Bits</a></li>
 <li><a href="#Missing_Number">Missing_Number</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Intersection_of_Two_Arrays_II">Intersection_of_Two_Arrays_II</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     268. Missing Number
+     Intersection of Two Arrays II
     
 
 
 
 
-    '268._Missing_Number'
+    'Intersection_of_Two_Arrays_II'
 
 
 
@@ -2153,11 +2153,48 @@ missingNumber([9,6,4,2,3,5,7,0,1])
 
 
 
+<a id='Intersection_of_Two_Arrays_II'></a>
+### Intersection_of_Two_Arrays_II
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def intersect(nums1: list[int], nums2: list[int]) -> list[int]:
+    res = []
+    nums2.sort()
+    
+    for n in nums1:
+        start = 0
+        end = len(nums2) - 1
+        while start <= end:
+            mid = (start + end) // 2
+            if nums2[mid] > n:
+                end = mid - 1
+            elif nums2[mid] < n:
+                start = mid + 1
+            else:
+                res.append(n)
+                nums2.pop(mid)
+                break
+                
+    return res
+
 ```
+
+
+```python
+nums1 = [4,9,5]
+nums2 = [9,4,9,8,4]
+nums1 = [1,2,2,1]
+nums2 = [2]
+intersect(nums1, nums2)
+```
+
+
+
+
+    [2]
+
+
 
 
 ```python
