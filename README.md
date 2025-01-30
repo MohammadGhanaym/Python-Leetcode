@@ -45,7 +45,7 @@
 <li><a href="#Number_of_1_Bits">Number_of_1_Bits</a></li>
 <li><a href="#Missing_Number">Missing_Number</a></li>
 <li><a href="#Intersection_of_Two_Arrays_II">Intersection_of_Two_Arrays_II</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Count_Complete_Tree_Nodes">Count_Complete_Tree_Nodes</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     Intersection of Two Arrays II
+     Count Complete Tree Nodes
     
 
 
 
 
-    'Intersection_of_Two_Arrays_II'
+    'Count_Complete_Tree_Nodes'
 
 
 
@@ -2196,11 +2196,30 @@ intersect(nums1, nums2)
 
 
 
+<a id='Count_Complete_Tree_Nodes'></a>
+### Count_Complete_Tree_Nodes
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def countNodes(root: TreeNode):
+    if not root:
+        return 0
+
+    return countNodes(root.left) + countNodes(root.right) + 1
 ```
+
+
+```python
+root = build_tree([1,2,3,4,5,6])
+countNodes(root)
+```
+
+
+
+
+    6
+
+
 
 
 ```python
