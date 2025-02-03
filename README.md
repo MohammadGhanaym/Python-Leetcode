@@ -46,7 +46,7 @@
 <li><a href="#Missing_Number">Missing_Number</a></li>
 <li><a href="#Intersection_of_Two_Arrays_II">Intersection_of_Two_Arrays_II</a></li>
 <li><a href="#Count_Complete_Tree_Nodes">Count_Complete_Tree_Nodes</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Happy_Number">Happy_Number</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     Count Complete Tree Nodes
+     Happy Number
     
 
 
 
 
-    'Count_Complete_Tree_Nodes'
+    'Happy_Number'
 
 
 
@@ -2221,10 +2221,62 @@ countNodes(root)
 
 
 
+<a id='Happy_Number'></a>
+### Happy_Number
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def isHappy(n: int) -> bool:
+    visited = set()
+    while n not in visited:
+        if n == 1:
+            return True
+
+        visited.add(n)
+        output = 0
+        while n:
+            digit = n % 10
+            output += digit**2
+            n = n // 10
+        n = output
+    return False
+```
+
+
+```python
+isHappy(15)
+```
+
+
+
+
+    False
+
+
+
+
+```python
+def isHappy(n: int) -> bool:    
+    
+    def get_next_number(n):    
+        output = 0
+        
+        while n:
+            digit = n % 10
+            output += digit ** 2
+            n = n // 10
+        
+        return output
+
+    slow = get_next_number(n)
+    fast = get_next_number(get_next_number(n))
+
+    while slow != fast:
+        if fast == 1: return True
+        slow = get_next_number(slow)
+        fast = get_next_number(get_next_number(fast))
+
+    return slow == 1
 ```
 
 
