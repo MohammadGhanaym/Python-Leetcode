@@ -47,7 +47,7 @@
 <li><a href="#Intersection_of_Two_Arrays_II">Intersection_of_Two_Arrays_II</a></li>
 <li><a href="#Count_Complete_Tree_Nodes">Count_Complete_Tree_Nodes</a></li>
 <li><a href="#Happy_Number">Happy_Number</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Reverse_Linked_List">Reverse_Linked_List</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +61,13 @@
 input().replace(' ', '_')
 ```
 
-     Happy Number
+     206. Reverse Linked List
     
 
 
 
 
-    'Happy_Number'
+    '206._Reverse_Linked_List'
 
 
 
@@ -99,7 +99,7 @@ def build_linked_list_from_list(input_list):
     for value in input_list[1:]:
         current.next = ListNode(value)  # Create a new node and link it
         current = current.next  # Move to the new node
-
+    
     return head  # Return the head of the linked list
 
 # Function to display the linked list
@@ -2279,11 +2279,64 @@ def isHappy(n: int) -> bool:
     return slow == 1
 ```
 
+<a id='Reverse_Linked_List'></a>
+### Reverse_Linked_List
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverseList(head: ListNode) -> ListNode:
+    if not head:
+        return head
+    nextNode = head.next
+    head.next = None
+    preNode = head
+    while nextNode:
+        head = nextNode
+        nextNode = nextNode.next
+        head.next = preNode
+        preNode = head
+      
+    return head
 ```
+
+
+```python
+head = build_linked_list_from_list([1,2,3,4,5])
+
+display_linked_list(reverseList(head))
+```
+
+    5 -> 4 -> 3 -> 2 -> 1
+    
+
+
+```python
+def reverseList(head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+
+    new_head = reverseList(head.next)
+    head.next.next = head
+    head.next = None
+    
+    return new_head
+```
+
+
+```python
+head = build_linked_list_from_list([1,2,3,4,5])
+
+display_linked_list(reverseList(head))
+```
+
+    5 -> 4 -> 3 -> 2 -> 1
+    
 
 
 ```python
