@@ -48,9 +48,8 @@
 <li><a href="#Count_Complete_Tree_Nodes">Count_Complete_Tree_Nodes</a></li>
 <li><a href="#Happy_Number">Happy_Number</a></li>
 <li><a href="#Reverse_Linked_List">Reverse_Linked_List</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Contains_Duplicate">Contains_Duplicate</a></li>
+<li><a href="#Palindrome_Linked_List">Palindrome_Linked_List</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -61,13 +60,13 @@
 input().replace(' ', '_')
 ```
 
-     206. Reverse Linked List
+     Palindrome Linked List
     
 
 
 
 
-    '206._Reverse_Linked_List'
+    'Palindrome_Linked_List'
 
 
 
@@ -2338,17 +2337,108 @@ display_linked_list(reverseList(head))
     5 -> 4 -> 3 -> 2 -> 1
     
 
+<a id='Contains_Duplicate'></a>
+### Contains_Duplicate
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def containsDuplicate(nums: list[int]) -> bool:
+    return len(set(nums)) < len(nums)
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+containsDuplicate([1, 2])
 ```
+
+
+
+
+    False
+
+
+
+
+```python
+def containsDuplicate(nums: list[int]) -> bool:
+    nums.sort()
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i-1]:
+            return True
+    return False
+```
+
+
+```python
+containsDuplicate([1, 2, 1])
+```
+
+
+
+
+    True
+
+
+
+<a id='Palindrome_Linked_List'></a>
+### Palindrome_Linked_List
+
+
+```python
+def isPalindrome(head: ListNode) -> bool:
+    stack = []
+    current = head
+    while current:
+        stack.append(current.val)
+        current = current.next
+    while head:
+        if head.val != stack.pop():
+            return False
+        head = head.next
+    return True
+```
+
+
+```python
+head = build_linked_list_from_list([1,2, 1, 2])
+isPalindrome(head)
+```
+
+
+
+
+    False
+
+
+
+
+```python
+def isPalindrome(head: ListNode) -> bool:
+    list_vals = []
+    while head:
+        list_vals.append(head.val)
+        head = head.next
+    left, right = 0, len(list_vals) - 1
+    while left < right and list_vals[left] == list_vals[right]:
+        left += 1
+        right -= 1
+        
+    return left >= right
+```
+
+
+```python
+head = build_linked_list_from_list([1, 2])
+isPalindrome(head)
+
+```
+
+
+
+
+    False
+
+
 
 
 ```python
