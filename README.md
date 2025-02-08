@@ -50,7 +50,7 @@
 <li><a href="#Reverse_Linked_List">Reverse_Linked_List</a></li>
 <li><a href="#Contains_Duplicate">Contains_Duplicate</a></li>
 <li><a href="#Palindrome_Linked_List">Palindrome_Linked_List</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Valid_Anagram">Valid_Anagram</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -60,13 +60,13 @@
 input().replace(' ', '_')
 ```
 
-     Palindrome Linked List
+     242. Valid Anagram
     
 
 
 
 
-    'Palindrome_Linked_List'
+    '242._Valid_Anagram'
 
 
 
@@ -2440,10 +2440,44 @@ isPalindrome(head)
 
 
 
+<a id='Valid_Anagram'></a>
+### Valid_Anagram
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def count_let(s: str):
+    count = {}
+    for let in s:
+        count[let] = count.get(let, 0) + 1
+    return count
+    
+def isAnagram(s: str, t: str) -> bool:
+    s_count = count_let(s)
+    t_count = count_let(t)
+
+    for let in t_count: 
+        if (s_count != t_count) or (s_count[let] != t_count[let]):
+            return False
+    return True
+```
+
+
+```python
+s = "ab"
+t = "a"
+isAnagram(s, t)
+```
+
+
+
+
+    False
+
+
+
+
+```python
+s_count == t_count
 ```
 
 
