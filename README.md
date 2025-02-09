@@ -51,7 +51,7 @@
 <li><a href="#Contains_Duplicate">Contains_Duplicate</a></li>
 <li><a href="#Palindrome_Linked_List">Palindrome_Linked_List</a></li>
 <li><a href="#Valid_Anagram">Valid_Anagram</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Move_Zeroes">Move_Zeroes</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 
@@ -60,13 +60,13 @@
 input().replace(' ', '_')
 ```
 
-     242. Valid Anagram
+     283. Move Zeroes
     
 
 
 
 
-    '242._Valid_Anagram'
+    '283._Move_Zeroes'
 
 
 
@@ -2480,11 +2480,35 @@ isAnagram(s, t)
 s_count == t_count
 ```
 
+<a id='Move_Zeroes'></a>
+### Move_Zeroes
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def moveZeroes(nums: list[int]) -> None:
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    slow = 0
+    for fast in range(len(nums)):
+        if nums[fast] != 0:
+            nums[slow], nums[fast] = nums[fast], nums[slow]
+            slow += 1                 
 ```
+
+
+```python
+nums = [0,1,0,3,12]
+moveZeroes(nums)
+nums
+```
+
+
+
+
+    [1, 3, 12, 0, 0]
+
+
 
 
 ```python
