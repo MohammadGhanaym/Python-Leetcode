@@ -1,6 +1,4 @@
 ## Table of Contents
-### Difficulty: Easy
-
 <li><a href="#Two Sum">Two Sum</a></li>
 <li><a href="#Palindrome Number">Palindrome Number</a></li>
 <li><a href="#Roman to Integer">Roman to Integer</a></li>
@@ -52,6 +50,29 @@
 <li><a href="#Palindrome_Linked_List">Palindrome_Linked_List</a></li>
 <li><a href="#Valid_Anagram">Valid_Anagram</a></li>
 <li><a href="#Move_Zeroes">Move_Zeroes</a></li>
+<li><a href="#Power_of_Three">Power_of_Three</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 
@@ -60,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     283. Move Zeroes
+     326. Power of Three
     
 
 
 
 
-    '283._Move_Zeroes'
+    '326._Power_of_Three'
 
 
 
@@ -2510,11 +2531,46 @@ nums
 
 
 
+<a id='Power_of_Three'></a>
+### Power_of_Three
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def isPowerOfThree(n: int) -> bool:
+    if n <= 0:
+        return False
+
+    pow_ = 0
+    while 3**pow_ < n:
+        pow_ +=1
+
+    return n == 3**pow_
 ```
+
+
+```python
+def getPow(n, pow_):
+    if 3**pow_ >= n:
+        return 3**pow_
+    return getPow(n, pow_ + 1)
+    
+def isPowerOfThree(n: int) -> bool:
+    if n <= 0:
+        return False
+    return n == getPow(n, 0)
+```
+
+
+```python
+isPowerOfThree(9)
+```
+
+
+
+
+    True
+
+
 
 
 ```python
