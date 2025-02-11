@@ -51,9 +51,9 @@
 <li><a href="#Valid_Anagram">Valid_Anagram</a></li>
 <li><a href="#Move_Zeroes">Move_Zeroes</a></li>
 <li><a href="#Power_of_Three">Power_of_Three</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Reverse_String">Reverse_String</a></li>
+<li><a href="#First_Unique_Character_in_a_String">First_Unique_Character_in_a_String</a></li>
+<li><a href="#Fizz_Buzz">Fizz_Buzz</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     326. Power of Three
+     Fizz Buzz
     
 
 
 
 
-    '326._Power_of_Three'
+    'Fizz_Buzz'
 
 
 
@@ -2572,23 +2572,135 @@ isPowerOfThree(9)
 
 
 
+<a id='Reverse_String'></a>
+### Reverse_String
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def reverseString(s: list[str]) -> None:
+    """
+    Do not return anything, modify s in-place instead.
+    """
+    start = 0
+    end = len(s) - 1
+    while start < end:
+        s[start], s[end] = s[end], s[start]
+        start += 1
+        end -= 1
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+#s = ["h","e","l","l","o"]
+s = ["H","a","n","n","a","h"]
+reverseString(s)
+s
+```
+
+
+
+
+    ['h', 'a', 'n', 'n', 'a', 'H']
+
+
+
+
+```python
+def reverseString(s: list[str]) -> None:
+    """
+    Do not return anything, modify s in-place instead.
+    """
+    s[:] = s[::-1]
 ```
 
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+|#s = ["h","e","l","l","o"]
+s = ["H","a","n","n","a","h"]
+reverseString(s)
+s
 ```
+
+
+
+
+    ['h', 'a', 'n', 'n', 'a', 'H']
+
+
+
+<a id='First_Unique_Character_in_a_String'></a>
+### First_Unique_Character_in_a_String
+
+
+```python
+def firstUniqChar(s: str) -> int:
+    let_count = {}
+    for let in s:
+        let_count[let] = let_count.get(let, 0) + 1
+    for i in range(len(s)):
+        if let_count[s[i]] == 1:
+            return i
+
+    return -1
+            
+```
+
+
+```python
+firstUniqChar('loveleetcode')
+```
+
+
+
+
+    2
+
+
+
+<a id='Fizz_Buzz'></a>
+### Fizz_Buzz
+
+
+```python
+def fizzBuzz(n: int) -> list[str]:
+    ans = []
+    for num in range(1, n + 1):
+        if num % 3 == 0 and num % 5 == 0:
+            ans.append('FizzBuzz')
+        elif num % 3 == 0:
+            ans.append('Fizz')
+        elif num % 5 == 0:
+            ans.append('Buzz')
+        else:
+            ans.append(f'{num}')
+    return ans
+```
+
+
+```python
+fizzBuzz(15)
+```
+
+
+
+
+    ['1',
+     '2',
+     'Fizz',
+     '4',
+     'Buzz',
+     'Fizz',
+     '7',
+     '8',
+     'Fizz',
+     'Buzz',
+     '11',
+     'Fizz',
+     '13',
+     '14',
+     'FizzBuzz']
+
+
 
 
 ```python
