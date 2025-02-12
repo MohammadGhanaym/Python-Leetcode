@@ -54,7 +54,7 @@
 <li><a href="#Reverse_String">Reverse_String</a></li>
 <li><a href="#First_Unique_Character_in_a_String">First_Unique_Character_in_a_String</a></li>
 <li><a href="#Fizz_Buzz">Fizz_Buzz</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#H-Index">H-Index</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     Fizz Buzz
+     H-Index
     
 
 
 
 
-    'Fizz_Buzz'
+    'H-Index'
 
 
 
@@ -2702,11 +2702,33 @@ fizzBuzz(15)
 
 
 
+<a id='H-Index'></a>
+### H-Index
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def hIndex(citations: list[int]) -> int:
+    size = len(citations)
+    citations.sort()
+    for idx, n_cit in enumerate(citations):
+        if n_cit >= (size - idx):
+            return size - idx
+    
+    return 0
 ```
+
+
+```python
+citations = [0, 1, 3, 5, 6]
+hIndex(citations)
+```
+
+
+
+
+    3
+
+
 
 
 ```python
