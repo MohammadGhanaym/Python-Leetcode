@@ -55,7 +55,7 @@
 <li><a href="#First_Unique_Character_in_a_String">First_Unique_Character_in_a_String</a></li>
 <li><a href="#Fizz_Buzz">Fizz_Buzz</a></li>
 <li><a href="#H-Index">H-Index</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Insert_Delete_GetRandom_O(1)">Insert_Delete_GetRandom_O(1)</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     H-Index
+     380. Insert Delete GetRandom O(1)
     
 
 
 
 
-    'H-Index'
+    '380._Insert_Delete_GetRandom_O(1)'
 
 
 
@@ -2729,6 +2729,76 @@ hIndex(citations)
     3
 
 
+
+<a id='Insert_Delete_GetRandom_O(1)'></a>
+### Insert_Delete_GetRandom_O(1)
+
+
+```python
+import random
+class RandomizedSet:
+
+    def __init__(self):
+        self.lst = {}
+
+    def insert(self, val: int) -> bool:
+        if val in self.lst:
+            return False
+        else:
+            self.lst[val] = val
+            return True
+
+    def remove(self, val: int) -> bool:
+        if val not in self.lst:
+            return False
+        else:
+            self.lst.pop(val)
+            return True
+
+    def getRandom(self) -> int:
+        idx = random.randint(0, len(self.lst)-1)
+        return list(self.lst.keys())[idx]
+```
+
+
+```python
+randLst = RandomizedSet() 
+randLst.insert(1)
+randLst.remove(2)
+randLst.insert(2)
+randLst.getRandom()
+```
+
+
+
+
+    2
+
+
+
+
+```python
+<a id='Refer_to'></a>
+### Refer_to
+```
+
+
+```python
+<a id='Refer_to'></a>
+### Refer_to
+```
+
+
+```python
+<a id='Refer_to'></a>
+### Refer_to
+```
+
+
+```python
+<a id='Refer_to'></a>
+### Refer_to
+```
 
 
 ```python
