@@ -56,7 +56,7 @@
 <li><a href="#Fizz_Buzz">Fizz_Buzz</a></li>
 <li><a href="#H-Index">H-Index</a></li>
 <li><a href="#Insert_Delete_GetRandom_O(1)">Insert_Delete_GetRandom_O(1)</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Product_of_Array_Except_Self">Product_of_Array_Except_Self</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     380. Insert Delete GetRandom O(1)
+     238. Product of Array Except Self
     
 
 
 
 
-    '380._Insert_Delete_GetRandom_O(1)'
+    '238._Product_of_Array_Except_Self'
 
 
 
@@ -2776,11 +2776,38 @@ randLst.getRandom()
 
 
 
+<a id='Product_of_Array_Except_Self'></a>
+### Product_of_Array_Except_Self
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def productExceptSelf(nums: list[int]) -> list[int]:
+    ans = [1] * len(nums)
+
+    left = 1
+    for i in range(len(nums)):
+        ans[i] *= left
+        left *= nums[i]
+
+    right = 1
+
+    for i in range(len(nums)-1, -1, -1):
+        ans[i] *= right
+        right *= nums[i]
+    return ans
 ```
+
+
+```python
+productExceptSelf([1, 2, 3, 4])
+```
+
+
+
+
+    [24, 12, 8, 6]
+
+
 
 
 ```python
