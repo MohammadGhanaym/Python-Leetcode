@@ -57,7 +57,7 @@
 <li><a href="#H-Index">H-Index</a></li>
 <li><a href="#Insert_Delete_GetRandom_O(1)">Insert_Delete_GetRandom_O(1)</a></li>
 <li><a href="#Product_of_Array_Except_Self">Product_of_Array_Except_Self</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Gas_Station">Gas_Station</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     238. Product of Array Except Self
+     Gas Station
     
 
 
 
 
-    '238._Product_of_Array_Except_Self'
+    'Gas_Station'
 
 
 
@@ -2809,11 +2809,40 @@ productExceptSelf([1, 2, 3, 4])
 
 
 
+<a id='Gas_Station'></a>
+### Gas_Station
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def canCompleteCircuit(gas: list[int], cost: list[int]) -> int:
+    if sum(gas) < sum(cost):
+        return -1
+
+    current_gas = 0
+    start = 0
+    for i in range(len(gas)):
+        current_gas += gas[i] - cost[i]
+        if current_gas < 0:
+            current_gas = 0
+            start = i + 1
+            
+    return start
 ```
+
+
+```python
+gas = [5,1,2,3,4]
+cost = [4,4,1,5,1]
+
+canCompleteCircuit(gas, cost)
+```
+
+
+
+
+    4
+
+
 
 
 ```python
