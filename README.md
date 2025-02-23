@@ -58,7 +58,7 @@
 <li><a href="#Insert_Delete_GetRandom_O(1)">Insert_Delete_GetRandom_O(1)</a></li>
 <li><a href="#Product_of_Array_Except_Self">Product_of_Array_Except_Self</a></li>
 <li><a href="#Gas_Station">Gas_Station</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#First_Bad_Version">First_Bad_Version</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     Gas Station
+     First Bad Version
     
 
 
 
 
-    'Gas_Station'
+    'First_Bad_Version'
 
 
 
@@ -2844,10 +2844,23 @@ canCompleteCircuit(gas, cost)
 
 
 
+<a id='First_Bad_Version'></a>
+### First_Bad_Version
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        start = 1
+        end = n
+        while start < end:
+            mid = (start + end) // 2
+            if not isBadVersion(mid):
+                start = mid + 1
+            else:
+                end = mid
+                
+        return start
 ```
 
 
