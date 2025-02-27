@@ -59,7 +59,7 @@
 <li><a href="#Product_of_Array_Except_Self">Product_of_Array_Except_Self</a></li>
 <li><a href="#Gas_Station">Gas_Station</a></li>
 <li><a href="#First_Bad_Version">First_Bad_Version</a></li>
-<li><a href="#Write_Here">Write_Here</a></li>
+<li><a href="#Intersection_of_Two_Arrays">Intersection_of_Two_Arrays</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
 <li><a href="#Write_Here">Write_Here</a></li>
@@ -81,13 +81,13 @@
 input().replace(' ', '_')
 ```
 
-     First Bad Version
+     Intersection of Two Arrays
     
 
 
 
 
-    'First_Bad_Version'
+    'Intersection_of_Two_Arrays'
 
 
 
@@ -2863,10 +2863,87 @@ class Solution:
         return start
 ```
 
+<a id='Intersection_of_Two_Arrays'></a>
+### Intersection_of_Two_Arrays
+
 
 ```python
-<a id='Refer_to'></a>
-### Refer_to
+def intersection(nums1: list[int], nums2: list[int]) -> list[int]:
+    nums1.sort()
+    nums2.sort()
+    idx1, idx2, ans = 0, 0, set()
+    while idx1 < len(nums1) and idx2 < len(nums2):
+        if nums1[idx1] < nums2[idx2]:
+            idx1 += 1
+        elif nums1[idx1] > nums2[idx2]:
+            idx2 += 1
+        else:
+            ans.add(nums1[idx1])
+            idx1 += 1
+            idx2 += 1
+    return list(ans)
+```
+
+
+```python
+nums1 = [1,2,2,1]
+nums2 = [2,2]
+intersection(nums1, nums2)
+```
+
+
+
+
+    [2]
+
+
+
+
+```python
+def intersection(nums1: list[int], nums2: list[int]) -> list[int]:
+    return list(set(nums1) & set(nums2))
+```
+
+
+```python
+def intersection(nums1: list[int], nums2: list[int]) -> list[int]:
+    if len(nums1) < len(nums2):
+        nums1, nums2 = nums2, nums1
+
+    nums1.sort()
+    nums2 = set(nums2)
+    ans = []
+    for num in nums2:
+        start, end = 0, len(nums1) - 1
+        while start <= end:
+            mid = (start + end) // 2
+            if nums1[mid] == num:
+                ans.append(num)
+                break
+            elif nums1[mid] < num:
+                start = mid + 1
+            else:
+                end = mid - 1
+    return ans
+```
+
+
+```python
+nums1 = [1,2,2,1]
+nums2 = [2,2]
+intersection(nums1, nums2)
+```
+
+
+
+
+    [2]
+
+
+
+
+```python
+
 ```
 
 
